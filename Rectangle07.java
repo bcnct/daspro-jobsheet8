@@ -10,7 +10,7 @@ public class Rectangle07 {
         int kolom = sc.nextInt();
         for (int i = 1; i <= baris; i++) { // Outer Loop: Baris
             for (int j = 1; j <= kolom; j++) { // Inner Loop: Kolom
-                System.out.print("*");
+                System.out.print("#");
             }
             System.out.println();
             /*
