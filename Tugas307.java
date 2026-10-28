@@ -25,13 +25,12 @@ public class Tugas307 {
         int tokoTerbanyak = 0;
         // Variabel berjenis integer untuk menyimpan nomor toko dengan jumlah barang
         // yang terjual paling banyak dari antara toko lain
-        int barangToko = 0;
-        // Menampung total akumulasi barang yang dibeli seluruh pelanggan di satu toko
-        // (pelanggan 1 + pelanggan 2 + ...)
         String ringkasan = "";
         // Variabel berjenis String untuk menyimpan templat ringkasan sesuai ketentuan.
         // Wajib diinisialisasi dengan String kosong ("") agar operator += dapat
         // digunakan.
+        int maxBarang = -1;    
+        // Variabel berjenis integer dengan nama maxBarang untuk menampung rekor jumlah barang terbanyak
         for (int i = 1; i <= jumlahToko; i++) {
             // Perulangan yang akan berjalan hingga nilai dari variabel i kurang dari sama
             // dengan jumlah toko
@@ -48,6 +47,13 @@ public class Tugas307 {
                 }
             } while (jumlahPelanggan < 0);
             // Perulangan hanya akan berhenti jika jumlah pelanggan tidak kurang dari 0
+
+            // PERBAIKAN 1: barangToko diinisialisasi 0 di DALAM loop agar selalu di-reset
+            // per toko
+
+            int barangToko = 0;
+            // Menampung total akumulasi barang yang dibeli seluruh pelanggan di satu toko
+            // (pelanggan 1 + pelanggan 2 + ...)
             for (int j = 1; j <= jumlahPelanggan; j++) {
                 // Perulangan yang akan berjalan hingga nilai dari variabel j kurang dari sama
                 // dengan jumlah pelanggan
@@ -71,13 +77,16 @@ public class Tugas307 {
             // Menambahkan nilai dari variabel ringkasan dengan pesan yang sesuai ketentuan.
             // Sebagai contoh:
             // Toko 1 - pelanggan: 1, total barang: 1
-            if (barangToko > tokoTerbanyak) {
-                // Membandingkan jumlah barang terjual dari toko saat ini dengan jumlah barang
-                // jual dari toko terbanyak
+
+            // PERBAIKAN 2: Bandingkan barangToko dengan maxBarang, bukan dengan
+            // tokoTerbanyak
+
+            if (barangToko > maxBarang) {
+                // Membandingkan jumlah barang terjual dari toko saat ini dengan rekor jumlah barang terjual dari satu toko
                 // Jika true (barang terjual dari toko saat ini lebih besar daripada barang
                 // terjual dari toko terbanyak)
-                tokoTerbanyak = barangToko;
-                // Maka, menginisiasi (mengganti) jumlah barang terjual dari toko terbanyak
+                maxBarang = barangToko;
+                // Maka, menginisiasi (mengganti) maksimal barang terjual dari toko terbanyak
                 // dengan jumlah barang terjual dari toko saat ini
                 tokoTerbanyak = i;
                 // Maka, menginisiasi (mengganti) nomor toko dengan penjualan terbanyak menjadi
